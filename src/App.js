@@ -23,6 +23,7 @@ class App extends React.Component {
     this.handleInput = this.handleInput.bind(this);
     this.addNote = this.addNote.bind(this)
     this.deleteNote = this.deleteNote.bind(this)
+    this.updateNote = this.updateNote.bind(this)
   }
 
   handleInput(e) {
@@ -35,11 +36,11 @@ class App extends React.Component {
       }
     });
   }
-  handleOpenModal(e) {
+  handleOpenModal() {
     this.setState({ showModal: true });
   }
 
-  handleCloseModal(e) {
+  handleCloseModal() {
     this.setState({ showModal: false });
   }
 
@@ -66,6 +67,18 @@ class App extends React.Component {
       notes: filteredNotes
     }
     )
+  }
+
+  updateNote(e){
+    e.preventDefault();
+    this.setState({
+      currentNote: {
+        title: '',
+        text: '',
+        key: '',
+        showModal: false
+      }
+    })
   }
 
 
@@ -106,9 +119,13 @@ newDate.toLocaleTimeString(navigator.language, {hour: '2-digit', minute:'2-digit
           isOpen={this.state.showModal}
           contentLabel="Your Note!"
         >
-          <h2 ref={_subtitle => (subtitle = _subtitle)}>
-            {modalItems}
-          </h2>
+          <form>
+          <input name="title" placeholder="Name your note here!" type="text" defaultValue={this.state.title} onChange={this.handleInput}></input>
+          <br></br>
+          <textarea name="text" placeholder="Write your note here!" defaultValue={this.state.text} onChange={this.handleInput}>
+          </textarea>
+          <button type="submit" onClick={this.updateNote}>Update note!</button>
+          </form>
           <button onClick={this.handleCloseModal}>Close Modal</button>
         </Modal>
       </div>
