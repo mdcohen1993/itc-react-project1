@@ -1,5 +1,9 @@
 .App {
   text-align: center;
+  background-color: lightblue;
+  min-height: 500px;
+  width: 600px;
+  margin: auto;
 }
 
 .App-logo {
@@ -36,3 +40,29 @@
     transform: rotate(360deg);
   }
 }
+
+#notes-form textarea{
+  border-radius: 10px;
+  border: 1px solid transparent;
+  width: 200px;
+  padding: 0 20px;
+  color: white;
+  background-color: slategrey;
+  resize: none;
+  min-height: 26vh;
+  height: unset;
+}
+
+#notes-form textarea::placeholder{
+  color: white
+}
+
+form button{
+  height: 40px;
+  width: 125px;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  display: block;
+  margin: auto;
+}
+
